@@ -1,0 +1,26 @@
+
+version: '3.8'
+
+services:
+  book_db:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+
+  web:
+    build: .
+    container_name: django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - book_db
+
+volumes:
+  mongodata:
+
