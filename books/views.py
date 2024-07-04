@@ -19,7 +19,7 @@ class BookViewSet(viewsets.ViewSet):
         if serializer.is_valid():
             db.books.insert_one(serializer.data)
             return Response(serializer.data)
-        return Response(serializer.errors, status=400)
+        return Response(serializer.errors, status=500)
 
     def retrieve(self, request, pk=None):
         book = db.books.find_one({"_id": ObjectId(pk)})
@@ -27,11 +27,11 @@ class BookViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def update(self, request, pk=None):
-        serializer = BookSerializer(data=request.data)
+        serializer = BookSerializer(existing_book, data=request.data, partial=True)
         if serializer.is_valid():
             db.books.update_one({"_id": ObjectId(pk)}, {"$set": serializer.data})
             return Response(serializer.data)
-        return Response(serializer.errors, status=400)
+        return Response(serializer.errors, status=500)
 
     def destroy(self, request, pk=None):
         db.books.delete_one({"_id": ObjectId(pk)})
