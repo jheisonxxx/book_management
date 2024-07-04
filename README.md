@@ -7,6 +7,10 @@ This project is a book management system that provides a REST API for performing
 - Docker
 - Docker Compose
 
+## AWS
+You can see the project running in AWS in the URL:
+`http://3.16.183.226/`
+
 ## Setup
 
 1. Clone this repository or download the zip file and extract it.
@@ -38,7 +42,7 @@ The API will be available at `http://localhost:8000`.
 - **PUT** `/api/books/{id}/`: Update a specific book.
 - **DELETE** `/api/books/{id}/`: Delete a specific book.
 
-### MongoDB Aggregation
+### Average Price
 
 - **GET** `/api/books/average_price/{year}/`: Get the average price of books published in a specific year.
 
@@ -51,8 +55,15 @@ The API will be available at `http://localhost:8000`.
 
 The API is configured to support pagination. You can use the `page` and `page_size` parameters in requests to control pagination.
 
+## Documentation
+
+The documentation in swagger can be access by: **GET** `/docs/`
+
 ## Testing
 
 To run the unit tests, use the following command:
 
 ```bash
+```
+
+

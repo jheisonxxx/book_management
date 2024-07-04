@@ -1,11 +1,11 @@
 FROM python:3.9-slim
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY requirements.txt .
+COPY ./requirements.txt /usr/src/app/
 RUN pip install -r requirements.txt
 
-ENV PYTHONPATH=/app
+ENV PYTHONPATH=/usr/src/app
 
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 
