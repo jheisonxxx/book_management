@@ -59,11 +59,5 @@ The API is configured to support pagination. You can use the `page` and `page_si
 
 The documentation in swagger can be access by: **GET** `/docs/`
 
-## Testing
-
-To run the unit tests, use the following command:
-
-```bash
-```
 
 
