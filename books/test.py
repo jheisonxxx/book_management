@@ -1,12 +1,16 @@
 from django.test import TestCase
-from .models import Book
+from settings import db
 
 class BookTestCase(TestCase):
     def setUp(self):
-        Book.objects.create(title='Test Book', author='Test Author', published_date='2022-01-01', genre='Fiction', price=10.00)
+        book ={"title": "Test Book", "author": "Test Author", "published_date": "2022-01-01", "genre": "Fiction",
+             "price": 10.00}
+        db.books.insert_one(book)
 
     def test_book_creation(self):
-        book = Book.objects.get(title='Test Book')
+        book = {"title": "Test Book", "author": "Test Author", "published_date": "2022-01-01", "genre": "Fiction",
+             "price": 10.00}
+        db.books.insert_one(book)
         self.assertEqual(book.author, 'Test Author')
 
     def test_average_price(self):

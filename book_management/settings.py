@@ -1,6 +1,7 @@
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +24,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'books',
-    'djongo',
     'drf_yasg',
 ]
 
@@ -57,17 +57,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'book_management.wsgi.application'
 
-# Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'book_management',
-        'CLIENT': {
-            'host': 'book_db',  # Nombre del servicio de MongoDB en docker-compose.yml
-            'port': 27017,
-        }
-    }
-}
+
+
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -99,12 +91,9 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
+  #  'DEFAULT_PERMISSION_CLASSES': [
+   #     'rest_framework.permissions.IsAuthenticated',
+  #  ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 3,
 }

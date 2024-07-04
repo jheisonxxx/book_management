@@ -5,7 +5,7 @@ from .views import BookViewSet, average_price_by_year
 
 
 router = DefaultRouter()
-router.register(r'books', BookViewSet)
+router.register(r'books', BookViewSet, basename='book')
 
 urlpatterns = [
     path('', include(router.urls)),
