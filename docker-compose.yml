@@ -5,10 +5,16 @@ services:
       context: .
     ports:
       - "8000:8000"
+    volumes:
+      - static:/usr/src/app/staticfiles
 
   nginx:
     build: ./ngnix
+    volumes:
+      - static:/usr/src/app/staticfiles
     ports:
       - "80:80"
     depends_on:
       - django_gunicorn
+volumes:
+  static:

@@ -1,3 +1,4 @@
 #!/bin/sh
 echo "Running Application"
-gunicorn src.wsgi:application --bind 0.0.0.0:8000
+python manage.py collectstatic --no-input
+gunicorn book_management.wsgi:application --bind 0.0.0.0:8000

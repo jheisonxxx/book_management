@@ -1,67 +1,58 @@
 # Book Management System
 
-Este proyecto es un sistema de gestión de libros que proporciona una API REST para realizar operaciones CRUD en la base de datos MongoDB utilizando Django y Django Rest Framework. Además, implementa un pipeline de agregación de MongoDB para obtener el precio promedio de los libros publicados en un año específico.
+This project is a book management system that provides a REST API for performing CRUD operations on a MongoDB database using Django and Django Rest Framework. It also implements a MongoDB aggregation pipeline to get the average price of books published in a specific year.
 
-## Requisitos
+## Requirements
 
 - Docker
 - Docker Compose
 
-## Configuración
+## Setup
 
-1. Clona este repositorio o descarga el archivo zip y extráelo.
+1. Clone this repository or download the zip file and extract it.
 
     ```bash
-    git clone <URL_DEL_REPOSITORIO>
+    git clone https://github.com/jheisonxxx/book_management.git
     cd book_management
     ```
 
-2. Construye y ejecuta los contenedores Docker.
+2. Build and run the Docker containers.
 
     ```bash
     docker-compose up --build
     ```
 
-    Este comando realizará las siguientes acciones:
-    - Construirá la imagen de Docker para la aplicación Django.
-    - Ejecutará las migraciones de la base de datos.
-    - Sembrará la base de datos con datos de prueba iniciales.
-    - Iniciará el servidor Django en el puerto 8000.
+    This command will perform the following actions:
+    - Build the Docker image for the Django application.
+    - Start the Django server on port 8000.
 
 ## Endpoints
 
-La API estará disponible en `http://localhost:8000`.
+The API will be available at `http://localhost:8000`.
 
-### CRUD de Libros
+### CRUD for Books
 
-- **GET** `/api/books/`: Lista todos los libros.
-- **POST** `/api/books/`: Crea un nuevo libro.
-- **GET** `/api/books/{id}/`: Obtiene los detalles de un libro específico.
-- **PUT** `/api/books/{id}/`: Actualiza un libro específico.
-- **DELETE** `/api/books/{id}/`: Elimina un libro específico.
+- **GET** `/api/books/`: List all books.
+- **POST** `/api/books/`: Create a new book.
+- **GET** `/api/books/{id}/`: Get details of a specific book.
+- **PUT** `/api/books/{id}/`: Update a specific book.
+- **DELETE** `/api/books/{id}/`: Delete a specific book.
 
-### Agregación de MongoDB
+### MongoDB Aggregation
 
-- **GET** `/api/books/average_price/{year}/`: Obtiene el precio promedio de los libros publicados en un año específico.
+- **GET** `/api/books/average_price/{year}/`: Get the average price of books published in a specific year.
 
-### Autenticación
+### Authentication
 
-- **POST** `/api/token/`: Obtiene un token de acceso JWT.
-- **POST** `/api/token/refresh/`: Refresca el token de acceso JWT.
+- **POST** `/api/token/`: Obtain a JWT access token.
+- **POST** `/api/token/refresh/`: Refresh the JWT access token.
 
-## Paginación
+## Pagination
 
-La API está configurada para soportar paginación. Puedes utilizar los parámetros `page` y `page_size` en las solicitudes para controlar la paginación.
+The API is configured to support pagination. You can use the `page` and `page_size` parameters in requests to control pagination.
 
-## Pruebas
+## Testing
 
-Para ejecutar las pruebas unitarias, utiliza el siguiente comando:
+To run the unit tests, use the following command:
 
 ```bash
-docker-compose run web python manage.py test
-docker-compose run --rm web python manage.py runserver
-docker-compose run --rm web python manage.py makemigrations
-docker-compose run --rm web python manage.py migrate
-docker-compose run --rm web python manage.py loaddata books/fixtures/books.json
-docker-compose run --rm web python manage.py createsuperuser
-docker-compose run --rm web pip install -r requirements.txt

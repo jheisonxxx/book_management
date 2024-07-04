@@ -1,19 +1,16 @@
 
 from pathlib import Path
 
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '4z%3f*1m3)z9m$8q$1#7z@c_1e2+x#y$h&j@&k_ljjf#zj4_=w'
+JWT_SECRET = os.environ.get('JWT_SECRET', '4z%3f*1m3)z9m$8q$1#7z@c_1e2+x#y$h&j@&k_ljjf#zj4_=w')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,11 +54,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'book_management.wsgi.application'
 
-
-
-
-
-# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
