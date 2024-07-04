@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "b28d86fc-494b-4e50-9eaf-90ff00f13d3d",
+		"name": "Reto Seeks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10411868",
+		"_collection_link": "https://cloudy-moon-9985.postman.co/workspace/New-Team-Workspace~b3e419ac-7e1c-49f5-b855-97ec85105746/collection/10411868-b28d86fc-494b-4e50-9eaf-90ff00f13d3d?action=share&source=collection_link&creator=10411868"
+	},
+	"item": [
+		{
+			"name": "Cases with Error",
+			"item": [
+				{
+					"name": "Get Average Price with error",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/api/books/average_price/prueba/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"books",
+								"average_price",
+								"prueba",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Book with error",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Example Book\",\r\n  \"author\": \"Author Name\",\r\n  \"price\": \"NaN\",\r\n  \"genre\": \"Fiction\",\r\n  \"published_date\": \"2024-07-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://3.16.183.226/api/books/",
+							"protocol": "http",
+							"host": [
+								"3",
+								"16",
+								"183",
+								"226"
+							],
+							"path": [
+								"api",
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book with Error",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 88bac023c7eddcd7622ea0cde4b94c790b49b52b",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://3.16.183.226/api/books/6685db00e1f5b43fa0bd18d/",
+							"protocol": "http",
+							"host": [
+								"3",
+								"16",
+								"183",
+								"226"
+							],
+							"path": [
+								"api",
+								"books",
+								"6685db00e1f5b43fa0bd18d",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book with error",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://3.16.183.226/api/books/6685db00e15b43fba0bd18f/",
+							"protocol": "http",
+							"host": [
+								"3",
+								"16",
+								"183",
+								"226"
+							],
+							"path": [
+								"api",
+								"books",
+								"6685db00e15b43fba0bd18f",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cases with succeed",
+			"item": [
+				{
+					"name": "Post Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Example Book\",\r\n  \"author\": \"Author Name\",\r\n  \"price\": 19.99,\r\n  \"genre\": \"Fiction\",\r\n  \"published_date\": \"2024-07-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://3.16.183.226/api/books/",
+							"protocol": "http",
+							"host": [
+								"3",
+								"16",
+								"183",
+								"226"
+							],
+							"path": [
+								"api",
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jheison.talavera@ucsp.edu.pe\",\r\n    \"password\": \"426857jj\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/users/login/",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 88bac023c7eddcd7622ea0cde4b94c790b49b52b",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://3.16.183.226/api/books/6685db00e1f5b43fba0bd18d/",
+							"protocol": "http",
+							"host": [
+								"3",
+								"16",
+								"183",
+								"226"
+							],
+							"path": [
+								"api",
+								"books",
+								"6685db00e1f5b43fba0bd18d",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Average Price",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://3.16.183.226/api/books/average_price/2021/",
+							"protocol": "http",
+							"host": [
+								"3",
+								"16",
+								"183",
+								"226"
+							],
+							"path": [
+								"api",
+								"books",
+								"average_price",
+								"2021",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://3.16.183.226/api/books/6685db00e1f5b43fba0bd18f/",
+							"protocol": "http",
+							"host": [
+								"3",
+								"16",
+								"183",
+								"226"
+							],
+							"path": [
+								"api",
+								"books",
+								"6685db00e1f5b43fba0bd18f",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://3.16.183.226/api/books/",
+							"protocol": "http",
+							"host": [
+								"3",
+								"16",
+								"183",
+								"226"
+							],
+							"path": [
+								"api",
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
