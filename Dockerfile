@@ -11,10 +11,14 @@ RUN pip install -r requirements.txt
 
 ENV PYTHONPATH=/app
 
+COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
+
+# Switch to root to set execute permission
+
 COPY . .
 
 # Expone el puerto en el que se ejecutará la aplicación
 EXPOSE 8000
 
 # Comando para ejecutar la aplicación
-CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
+RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
