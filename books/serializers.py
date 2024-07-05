@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import Book
 
 class BookSerializer(serializers.ModelSerializer):
+    id = serializers.CharField(source='_id', read_only=True)
     #published_year = serializers.SerializerMethodField()
 
     class Meta:
