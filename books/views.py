@@ -1,3 +1,4 @@
+
 from rest_framework import viewsets
 from .models import Book
 from .serializers import BookSerializer
@@ -22,28 +23,39 @@ class BookViewSet(viewsets.ViewSet):
             return Response({"error": f"Error fetching book list: {str(e)}"}, status=500)
 
     def create(self, request):
-        serializer = BookSerializer(data=request.data)
-        if serializer.is_valid():
-            db.books.insert_one(serializer.data)
-            return Response(serializer.data)
-        return Response(serializer.errors, status=500)
+        try:
+            serializer = BookSerializer(data=request.data)
+            if serializer.is_valid():
+                db.books.insert_one(serializer.data)
+                return Response(serializer.data)
+            return Response(serializer.errors, status=500)
+        except Exception as e:
+            return Response({"error": f"Error creating book: {str(e)}"}, status=500)
 
     def retrieve(self, request, pk=None):
-        book = db.books.find_one({"_id": ObjectId(pk)})
-        serializer = BookSerializer(book)
-        return Response(serializer.data)
+        try:
+            book = db.books.find_one({"_id": ObjectId(pk)})
+            serializer = BookSerializer(book)
+            return Response(serializer.data)
+        except Exception as e:
+            return Response({"error": f"Error fetching book: {str(e)}"}, status=500)
 
     def update(self, request, pk=None):
-        serializer = BookSerializer(existing_book, data=request.data, partial=True)
-        if serializer.is_valid():
-            db.books.update_one({"_id": ObjectId(pk)}, {"$set": serializer.data})
-            return Response(serializer.data)
-        return Response(serializer.errors, status=500)
+        try:
+            serializer = BookSerializer(existing_book, data=request.data, partial=True)
+            if serializer.is_valid():
+                db.books.update_one({"_id": ObjectId(pk)}, {"$set": serializer.data})
+                return Response(serializer.data)
+            return Response(serializer.errors, status=500)
+        except Exception as e:
+            return Response({"error": f"Error updating book: {str(e)}"}, status=500)
 
     def destroy(self, request, pk=None):
-        db.books.delete_one({"_id": ObjectId(pk)})
-        return Response(status=204)
-
+        try:
+            db.books.delete_one({"_id": ObjectId(pk)})
+            return Response(status=204)
+        except Exception as e:
+            return Response({"error": f"Error deleting book: {str(e)}"}, status=500)
 @api_view(['GET'])
 def average_price_by_year(request, year):
     collection = db.books
