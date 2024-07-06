@@ -56,6 +56,8 @@ class BookViewSet(viewsets.ViewSet):
             return Response(status=204)
         except Exception as e:
             return Response({"error": f"Error deleting book: {str(e)}"}, status=500)
+
+
 @api_view(['GET'])
 def average_price_by_year(request, year):
     collection = db.books
